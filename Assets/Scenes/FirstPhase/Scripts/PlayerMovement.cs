@@ -17,16 +17,17 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
-
+        
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             isJumping = true;
         }
+
     }
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(transform.position, 0.2f, LayerMask.GetMask("Ground"));
+        isGrounded = Physics2D.OverlapCircle(transform.position, 1.5f, LayerMask.GetMask("Ground"));
 
         if (isJumping)
         {
