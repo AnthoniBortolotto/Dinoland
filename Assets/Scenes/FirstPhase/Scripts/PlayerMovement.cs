@@ -7,9 +7,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     private bool isGrounded = false;
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
 
     private void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -23,6 +25,14 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
         }
 
+        if ( moveX > 0 )
+        {
+            sr.flipX = false;
+        } 
+        else if (moveX < 0) 
+        {
+            sr.flipX = true;
+        }
     }
 
     private void FixedUpdate()
