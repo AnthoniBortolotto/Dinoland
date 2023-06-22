@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Animator PlayerAnim;
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     private bool isJumping = false;
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        PlayerAnim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -27,11 +29,17 @@ public class PlayerMovement : MonoBehaviour
 
         if ( moveX > 0 )
         {
+            PlayerAnim.SetBool("DINO_Walk", true);
             sr.flipX = false;
         } 
         else if (moveX < 0) 
         {
+            PlayerAnim.SetBool("DINO_Walk", true); 
             sr.flipX = true;
+        }
+        else
+        {
+            PlayerAnim.SetBool("DINO_Walk", false);
         }
     }
 
