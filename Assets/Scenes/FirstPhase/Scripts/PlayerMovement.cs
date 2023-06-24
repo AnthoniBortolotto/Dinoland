@@ -24,7 +24,9 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            isJumping = true;
+            PlayerAnim.SetBool("DINO_Jump", true);
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            isJumping = false;
         }
 
         if ( moveX > 0 )
@@ -41,6 +43,15 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerAnim.SetBool("DINO_Walk", false);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) 
+    {
+        if ( collision.gameObject.name == "Ground")
+        {
+            PlayerAnim.SetBool("DINO_Jump", false);
+            isJumping = false;
+        }    
     }
 
     private void FixedUpdate()

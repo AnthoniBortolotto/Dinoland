@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 3485746}
   - component: {fileID: 3485745}
   m_Layer: 0
-  m_Name: 13
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 6162205}
   - component: {fileID: 6162204}
   m_Layer: 3
-  m_Name: 2 (2)
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 96961627}
   - component: {fileID: 96961626}
   m_Layer: 3
-  m_Name: 2 (1)
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,8 +603,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236937700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.43, y: 2.77, z: 1.6}
-  m_LocalScale: {x: 2.662938, y: 2.6576228, z: 2.6576228}
+  m_LocalPosition: {x: -0.13, y: 3.45, z: 1.6}
+  m_LocalScale: {x: 2.8908856, y: 2.8197377, z: 2.6576228}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 269945254}
   - component: {fileID: 269945253}
   m_Layer: 0
-  m_Name: 15
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1302,7 +1302,7 @@ GameObject:
   - component: {fileID: 911280405}
   - component: {fileID: 911280404}
   m_Layer: 0
-  m_Name: 14
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1956,7 +1956,7 @@ GameObject:
   - component: {fileID: 1670423149}
   - component: {fileID: 1670423148}
   m_Layer: 0
-  m_Name: 5
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
