@@ -12,7 +12,6 @@ public class PterodactilBehavior : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(player.position.x);
         if (isActivated)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);

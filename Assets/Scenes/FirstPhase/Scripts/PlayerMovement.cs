@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerAnim.SetBool("DINO_Walk", true);
             sr.flipX = false;
-            col.offset = new Vector2(Mathf.Abs(col.offset.x), col.offset.y);
         }
         else if (moveX < 0)
         {
