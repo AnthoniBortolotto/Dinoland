@@ -9,12 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = false;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+    private Collider2D col;
 
     private void Start()
     {
         PlayerAnim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
 
     private void Update()
@@ -29,15 +31,17 @@ public class PlayerMovement : MonoBehaviour
             isJumping = false;
         }
 
-        if ( moveX > 0 )
+        if (moveX > 0)
         {
             PlayerAnim.SetBool("DINO_Walk", true);
             sr.flipX = false;
-        } 
-        else if (moveX < 0) 
+            col.offset = new Vector2(Mathf.Abs(col.offset.x), col.offset.y);
+        }
+        else if (moveX < 0)
         {
-            PlayerAnim.SetBool("DINO_Walk", true); 
+            PlayerAnim.SetBool("DINO_Walk", true);
             sr.flipX = true;
+            col.offset = new Vector2(-Mathf.Abs(col.offset.x), col.offset.y);
         }
         else
         {
@@ -47,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) 
     {
-        if ( collision.gameObject.name == "Ground")
+        if (collision.gameObject.name == "Ground")
         {
             PlayerAnim.SetBool("DINO_Jump", false);
             isJumping = false;
