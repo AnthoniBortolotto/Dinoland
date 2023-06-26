@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 5f;
     private bool isJumping = false;
     private bool isGrounded = false;
+    private bool isMovingRight = true;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Collider2D col;
@@ -23,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
-        
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             PlayerAnim.SetBool("DINO_Jump", true);
@@ -34,13 +35,20 @@ public class PlayerMovement : MonoBehaviour
         if (moveX > 0)
         {
             PlayerAnim.SetBool("DINO_Walk", true);
-            sr.flipX = false;
+            if (!isMovingRight)
+            {
+                FlipSprite();
+            }
+            isMovingRight = true;
         }
         else if (moveX < 0)
         {
             PlayerAnim.SetBool("DINO_Walk", true);
-            sr.flipX = true;
-            col.offset = new Vector2(-Mathf.Abs(col.offset.x), col.offset.y);
+            if (isMovingRight)
+            {
+                FlipSprite();
+            }
+            isMovingRight = false;
         }
         else
         {
@@ -48,13 +56,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) 
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Ground")
         {
             PlayerAnim.SetBool("DINO_Jump", false);
             isJumping = false;
-        }    
+        }
     }
 
     private void FixedUpdate()
@@ -66,5 +74,12 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             isJumping = false;
         }
+    }
+
+    private void FlipSprite()
+    {
+        Vector3 newScale = transform.localScale;
+        newScale.x *= -1; // Inverte a escala no eixo X
+        transform.localScale = newScale;
     }
 }
